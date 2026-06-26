@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CWS — Pametna autopraonica, daljinski upravljana | cws-ng.org</title>
+<meta name="description" content="CWS — nova generacija upravljanja samouslužnim autopraonicama: daljinski nadzor, RFID loyalty, OTA update, anti-clone zaštita, garancija 5 godina. Referenca: Kärcher.">
+<style>
+  :root{ --brand:#0a6cbf; --brand2:#0e8ae0; --dark:#0f2740; --ink:#1c2733; --muted:#5b6b7c; --line:#e2e8ef; --bg:#f5f9fd; --green:#1c7c43; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:"Segoe UI",system-ui,Arial,sans-serif; color:var(--ink); line-height:1.6; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 22px; }
+  .btn{ display:inline-block; padding:12px 22px; border-radius:8px; font-weight:700; font-size:15px; cursor:pointer; transition:.15s; }
+  .btn-primary{ background:#fff; color:var(--brand); }
+  .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.18); }
+  .btn-ghost{ border:2px solid rgba(255,255,255,.7); color:#fff; }
+  .btn-ghost:hover{ background:rgba(255,255,255,.12); }
+  .btn-cta{ background:var(--brand); color:#fff; }
+  .btn-cta:hover{ background:#085699; }
+
+  /* NAV */
+  nav{ position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line); }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:62px; }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brandlogo{ height:52px; width:auto; }
+  .logo{ font-size:24px; font-weight:800; color:var(--brand); }
+  .logo small{ font-size:10px; font-weight:600; color:var(--dark); letter-spacing:1.5px; display:block; line-height:1; }
+  nav .links a{ margin-left:20px; font-size:14px; color:var(--muted); font-weight:600; }
+  nav .links a:hover{ color:var(--brand); }
+  nav .links .btn-cta{ color:#fff; }
+  .lang{ margin-left:20px; font-size:13px; font-weight:700; color:var(--muted); white-space:nowrap; }
+  .lang b{ color:var(--brand); }
+  .lang .sep{ color:var(--line); margin:0 4px; }
+  .lang a.langlink{ margin-left:0; color:var(--muted); }
+  .lang a.langlink:hover{ color:var(--brand); }
+  @media(max-width:760px){ nav .links a:not(.btn-cta):not(.langlink){ display:none; } .lang{ margin-left:0; } }
+
+  /* HERO */
+  .hero{ background:linear-gradient(135deg,var(--dark),var(--brand)); color:#fff; padding:74px 0 64px; }
+  .hero h1{ font-size:42px; line-height:1.15; letter-spacing:-.5px; }
+  .hero p.lead{ font-size:19px; opacity:.94; margin:18px 0 26px; max-width:620px; }
+  .hero .cta-row .btn{ margin:6px 10px 6px 0; }
+  .hero .micro{ margin-top:18px; font-size:13px; opacity:.85; }
+  @media(max-width:760px){ .hero h1{ font-size:30px; } .hero p.lead{ font-size:17px; } }
+
+  /* TRUST */
+  .trust{ background:#fff; border-bottom:1px solid var(--line); }
+  .trust .wrap{ display:flex; flex-wrap:wrap; gap:14px 36px; justify-content:center; padding:18px 22px; }
+  .trust b{ color:var(--brand); }
+  .trust span{ color:var(--muted); font-size:14px; font-weight:600; }
+
+  section{ padding:58px 0; }
+  .sec-bg{ background:var(--bg); }
+  h2{ font-size:30px; color:var(--dark); text-align:center; letter-spacing:-.3px; }
+  .sub{ text-align:center; color:var(--muted); max-width:680px; margin:10px auto 34px; font-size:16px; }
+
+  .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media(max-width:860px){ .grid{ grid-template-columns:1fr 1fr; } }
+  @media(max-width:560px){ .grid{ grid-template-columns:1fr; } }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:22px; }
+  .card .ico{ font-size:26px; }
+  .card h3{ font-size:17px; margin:8px 0 6px; color:var(--dark); }
+  .card p{ font-size:14px; color:var(--muted); }
+
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media(max-width:760px){ .steps{ grid-template-columns:1fr; } }
+  .step{ text-align:center; }
+  .step .n{ width:46px; height:46px; border-radius:50%; background:var(--brand); color:#fff; font-weight:800; font-size:20px; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; }
+
+  .audience{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media(max-width:760px){ .audience{ grid-template-columns:1fr; } }
+  .aud{ border:1px solid var(--line); border-radius:12px; padding:22px; background:#fff; }
+  .aud h3{ color:var(--brand); font-size:17px; margin-bottom:8px; }
+  .aud ul{ margin-left:18px; } .aud li{ font-size:14px; color:var(--muted); margin:4px 0; }
+
+  .demo{ background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#fff; border-radius:14px; padding:30px; text-align:center; }
+  .demo code{ background:rgba(255,255,255,.18); padding:2px 8px; border-radius:5px; }
+  .demo .btn{ margin-top:14px; }
+
+  .ctaband{ background:var(--dark); color:#fff; text-align:center; }
+  .ctaband h2{ color:#fff; } .ctaband .sub{ color:#cfe0f0; }
+
+  footer{ background:#0a1a2b; color:#9fb3c6; font-size:13px; padding:26px 0; }
+  footer .wrap{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; }
+  footer b{ color:#fff; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#">
+      <img class="brandlogo" src="/elektronika-logo.png" alt="Elektronika" onerror="this.style.display='none'">
+      <span class="logo">CWS<small>CAR&nbsp;WASH&nbsp;SYSTEM</small></span>
+    </a>
+    <div class="links">
+      <a href="#zasto">Zašto CWS</a>
+      <a href="#kako">Kako radi</a>
+      <a href="#rfid">RFID kartice</a>
+      <a href="#zakoga">Za koga</a>
+      <a href="https://www.elektronika.rs.ba" target="_blank" rel="noopener">Ostala ponuda ↗</a>
+      <span class="lang"><b>BS</b><span class="sep">|</span><a class="langlink" href="/en/">EN</a></span>
+      <a class="btn btn-cta" href="#kontakt">Zatraži ponudu</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Pametna autopraonica.<br>Daljinski upravljana.</h1>
+    <p class="lead">CWS je nova generacija upravljanja samouslužnim autopraonicama — kompletna platforma za
+      automatizaciju, naplatu, RFID loyalty i nadzor svih boksova u realnom vremenu, sa bilo koje lokacije.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://cws-test.cws-ng.org" target="_blank">▶ Probaj demo uživo</a>
+      <a class="btn btn-ghost" href="#kontakt">Zatraži ponudu</a>
+    </div>
+    <p class="micro">Referentna instalacija: <b>KÄRCHER, Banja Luka</b> · 15 godina iskustva · garancija 5 godina</p>
+  </div>
+</header>
+
+<div class="trust">
+  <div class="wrap">
+    <span>✓ <b>Kärcher</b> referenca</span>
+    <span>✓ <b>15 godina</b> proizvodnje</span>
+    <span>✓ <b>Garancija 5</b> godina</span>
+    <span>✓ <b>Daljinski</b> nadzor & OTA</span>
+    <span>✓ <b>Anti-clone</b> zaštita</span>
+    <span>✓ <b>CE</b> usklađeno</span>
+  </div>
+</div>
+
+<!-- ZAŠTO -->
+<section id="zasto">
+  <div class="wrap">
+    <h2>Sve što vam treba — u jednom sistemu</h2>
+    <p class="sub">Od kontrole svakog boksa do centralnog nadzora cijele perionice i daljinskog servisiranja.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">🖥️</div><h3>Nadzor u realnom vremenu</h3><p>Dashboard sa stanjem svakog boksa: tajmer, ubačeni novac, RFID kartice, iznos sesije, zadnja aktivnost.</p></div>
+      <div class="card"><div class="ico">💳</div><h3>Sigurna i fleksibilna naplata</h3><p>Žetonjere (serijski/paralelni/binarni), akceptor papirnog novca, te RFID loyalty kartice za stalne korisnike.</p></div>
+      <div class="card"><div class="ico">📡</div><h3>Daljinski pristup</h3><p>Pratite i podešavajte perionicu sa telefona, tableta ili PC-a — bez instalacije aplikacije, preko vlastitog web domena.</p></div>
+      <div class="card"><div class="ico">⬆️</div><h3>OTA firmware update</h3><p>Daljinsko ažuriranje softvera na pločama bez izlaska na teren — popravke i nove funkcije stižu „preko mreže".</p></div>
+      <div class="card"><div class="ico">🔒</div><h3>Anti-clone zaštita</h3><p>Kriptografska autentifikacija svake ploče sprječava kopiranje sistema i neovlaštene zamjene opreme.</p></div>
+      <div class="card"><div class="ico">📊</div><h3>Statistike i grafikoni</h3><p>Promet po danu/sedmici/opsegu, po firmi i kartici, korištenje programa pranja — sve u par klikova.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- KAKO -->
+<section id="kako" class="sec-bg">
+  <div class="wrap">
+    <h2>Montaža za nekoliko minuta</h2>
+    <p class="sub">Box panel se pušta u rad spajanjem svega <b>3 konektora</b>. Centralni ormar isporučujemo gotov i ispitan.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Spoji boks</h3><p>UTP kabal (komunikacija + napajanje), tač tasteri i žetonjera. Po želji i RFID čitač.</p></div>
+      <div class="step"><div class="n">2</div><h3>Postavi ormar</h3><p>Gotov upravljački ormar — na obilježene stezaljke spajate samo pumpe, ventile i senzore.</p></div>
+      <div class="step"><div class="n">3</div><h3>Podesi daljinski</h3><p>Sva podešavanja kroz web interfejs. Mi se daljinski javljamo na pomoć pri puštanju u rad.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- KOMPONENTE -->
+<section>
+  <div class="wrap">
+    <h2>Tri stuba sistema</h2>
+    <div class="grid">
+      <div class="card"><div class="ico">🔢</div><h3>Box panel</h3><p>RGB LED displej 70 mm (boja po želji), ulaz za žetonjeru i akceptor, RFID, vodootporni touch tasteri, ethernet. Do 7 programa pranja, popusti, dvije kase.</p></div>
+      <div class="card"><div class="ico">⚙️</div><h3>IO upravljanje</h3><p>Do <b>112 digitalnih izlaza 24V/10A</b> i analogni ulazi za senzore. Direktno spajate izvršne organe — releji su prošlost.</p></div>
+      <div class="card"><div class="ico">🗄️</div><h3>Centralni server</h3><p>Web administracija, baza transakcija i kartica, MQTT, automatski noćni backup i tri nivoa pristupa (korisnik / serviser / admin).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RFID -->
+<section id="rfid" class="sec-bg">
+  <div class="wrap">
+    <h2>RFID loyalty — kako vama odgovara</h2>
+    <p class="sub">Pre-paid ili post-paid, na nivou cijele firme i/ili svake kartice pojedinačno — čak i kombinovano.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">💼</div><h3>Po firmi</h3><p>Zajednički račun firme; sve kartice troše dok ima sredstava. Idealno za vozne parkove.</p></div>
+      <div class="card"><div class="ico">🪪</div><h3>Po kartici</h3><p>Svaka kartica ima svoj limit/stanje. Kombinujte sa zajedničkim računom firme po potrebi.</p></div>
+      <div class="card"><div class="ico">🌐</div><h3>Dopuna sa bilo gdje</h3><p>Stanje firme ili kartice dopunjavate sa telefona/PC-a, sa bilo koje lokacije sa internetom.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ZA KOGA -->
+<section id="zakoga">
+  <div class="wrap">
+    <h2>Za koga je CWS</h2>
+    <div class="audience">
+      <div class="aud"><h3>Vlasnici perionica</h3><ul>
+        <li>Potpuna kontrola i uvid u promet</li>
+        <li>RFID loyalty za stalne korisnike</li>
+        <li>Nadzor sa telefona, bez aplikacije</li>
+        <li>Zaštita investicije (anti-clone)</li>
+      </ul></div>
+      <div class="aud"><h3>Serviseri / monteri</h3><ul>
+        <li>Brza montaža (3 konektora po boksu)</li>
+        <li>Daljinska dijagnostika i OTA update</li>
+        <li>Sve postavke u YAML — export/import</li>
+        <li>Gotovi, ispitani ormari</li>
+      </ul></div>
+      <div class="aud"><h3>Distributeri</h3><ul>
+        <li>Visoka marža + pretplata (prihod)</li>
+        <li>Gotov, dokazan proizvod</li>
+        <li>Puna tehnička i marketinška podrška</li>
+        <li>Diferencijacija od konkurencije</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="sec-bg">
+  <div class="wrap">
+    <div class="demo">
+      <h2 style="color:#fff">Vidite sistem uživo — odmah</h2>
+      <p style="opacity:.95; max-width:620px; margin:10px auto 0">Otvorite demo server sa telefona ili računara i prošetajte kroz dashboard, podešavanja i statistike.</p>
+      <p style="margin-top:14px">Adresa: <code>cws-test.cws-ng.org</code> &nbsp; Korisnik: <code>serviser</code> &nbsp; Šifra: <code>servis2026</code></p>
+      <a class="btn btn-primary" href="https://cws-test.cws-ng.org" target="_blank">Otvori demo ▶</a>
+    </div>
+  </div>
+</section>
+
+<!-- BUDUĆNOST -->
+<section>
+  <div class="wrap" style="text-align:center; max-width:760px">
+    <h2>Spremno za budućnost</h2>
+    <p class="sub" style="margin-bottom:0">Modularna arhitektura omogućava proširenje na dodatne boksove i lokacije, IoT senzore, mjerenje potrošnje
+      (struja, voda, hemija), automatsku rasvjetu, čak i video nadzor — sve u jednom sistemu, sa jedinstvenim pristupom.
+      U pripremi je i integracija sa Home Assistant platformom.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="kontakt" class="ctaband">
+  <div class="wrap">
+    <h2>Zatražite ponudu ili demo</h2>
+    <a class="btn btn-primary" href="mailto:info@elektronika.rs.ba?subject=Upit%20za%20CWS%20sistem">✉ Pošalji upit</a>
+    <a class="btn btn-ghost" href="tel:+387(0)51/346-260" style="margin-left:10px">📞 +387 (0)51/346-260</a>
+    <p class="sub" style="margin:18px auto 0; color:#cfe0f0">Pogledajte i ostatak naše ponude elektronike na
+      <a href="https://www.elektronika.rs.ba" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline"><b>www.elektronika.rs.ba</b></a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>CWS — Car Wash System</b> · ELEKTRONIKA · K. Petra II br. 71, BANJA LUKA, BiH</div>
+    <div>+387(0)51/346-260 · info@elektronika.rs.ba · cws-ng.org · Demo: cws-test.cws-ng.org · <a href="https://www.elektronika.rs.ba" target="_blank" rel="noopener" style="color:#fff"><b>elektronika.rs.ba</b></a></div>
+  </div>
+</footer>
+
+</body>
+</html>

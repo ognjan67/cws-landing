@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CWS — Smart Car Wash, Remotely Managed | cws-ng.org</title>
+<meta name="description" content="CWS — the new generation of self-service car-wash management: remote monitoring, RFID loyalty, OTA updates, anti-clone security, 5-year warranty, CE marked. Reference: Kärcher.">
+<style>
+  :root{ --brand:#0a6cbf; --brand2:#0e8ae0; --dark:#0f2740; --ink:#1c2733; --muted:#5b6b7c; --line:#e2e8ef; --bg:#f5f9fd; --green:#1c7c43; }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{ font-family:"Segoe UI",system-ui,Arial,sans-serif; color:var(--ink); line-height:1.6; }
+  a{ color:inherit; text-decoration:none; }
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 22px; }
+  .btn{ display:inline-block; padding:12px 22px; border-radius:8px; font-weight:700; font-size:15px; cursor:pointer; transition:.15s; }
+  .btn-primary{ background:#fff; color:var(--brand); }
+  .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 6px 18px rgba(0,0,0,.18); }
+  .btn-ghost{ border:2px solid rgba(255,255,255,.7); color:#fff; }
+  .btn-ghost:hover{ background:rgba(255,255,255,.12); }
+  .btn-cta{ background:var(--brand); color:#fff; }
+  .btn-cta:hover{ background:#085699; }
+
+  nav{ position:sticky; top:0; z-index:10; background:#fff; border-bottom:1px solid var(--line); }
+  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height:62px; }
+  .brand{ display:flex; align-items:center; gap:12px; }
+  .brandlogo{ height:52px; width:auto; }
+  .logo{ font-size:24px; font-weight:800; color:var(--brand); }
+  .logo small{ font-size:10px; font-weight:600; color:var(--dark); letter-spacing:1.5px; display:block; line-height:1; }
+  nav .links a{ margin-left:20px; font-size:14px; color:var(--muted); font-weight:600; }
+  nav .links a:hover{ color:var(--brand); }
+  nav .links .btn-cta{ color:#fff; }
+  .lang{ margin-left:20px; font-size:13px; font-weight:700; color:var(--muted); white-space:nowrap; }
+  .lang b{ color:var(--brand); }
+  .lang .sep{ color:var(--line); margin:0 4px; }
+  .lang a.langlink{ margin-left:0; color:var(--muted); }
+  .lang a.langlink:hover{ color:var(--brand); }
+  @media(max-width:760px){ nav .links a:not(.btn-cta):not(.langlink){ display:none; } .lang{ margin-left:0; } }
+
+  .hero{ background:linear-gradient(135deg,var(--dark),var(--brand)); color:#fff; padding:74px 0 64px; }
+  .hero h1{ font-size:42px; line-height:1.15; letter-spacing:-.5px; }
+  .hero p.lead{ font-size:19px; opacity:.94; margin:18px 0 26px; max-width:640px; }
+  .hero .cta-row .btn{ margin:6px 10px 6px 0; }
+  .hero .micro{ margin-top:18px; font-size:13px; opacity:.85; }
+  @media(max-width:760px){ .hero h1{ font-size:30px; } .hero p.lead{ font-size:17px; } }
+
+  .trust{ background:#fff; border-bottom:1px solid var(--line); }
+  .trust .wrap{ display:flex; flex-wrap:wrap; gap:14px 36px; justify-content:center; padding:18px 22px; }
+  .trust b{ color:var(--brand); }
+  .trust span{ color:var(--muted); font-size:14px; font-weight:600; }
+
+  section{ padding:58px 0; }
+  .sec-bg{ background:var(--bg); }
+  h2{ font-size:30px; color:var(--dark); text-align:center; letter-spacing:-.3px; }
+  .sub{ text-align:center; color:var(--muted); max-width:700px; margin:10px auto 34px; font-size:16px; }
+
+  .grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media(max-width:860px){ .grid{ grid-template-columns:1fr 1fr; } }
+  @media(max-width:560px){ .grid{ grid-template-columns:1fr; } }
+  .card{ background:#fff; border:1px solid var(--line); border-radius:12px; padding:22px; }
+  .card .ico{ font-size:26px; }
+  .card h3{ font-size:17px; margin:8px 0 6px; color:var(--dark); }
+  .card p{ font-size:14px; color:var(--muted); }
+
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media(max-width:760px){ .steps{ grid-template-columns:1fr; } }
+  .step{ text-align:center; }
+  .step .n{ width:46px; height:46px; border-radius:50%; background:var(--brand); color:#fff; font-weight:800; font-size:20px; display:flex; align-items:center; justify-content:center; margin:0 auto 10px; }
+
+  .audience{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+  @media(max-width:760px){ .audience{ grid-template-columns:1fr; } }
+  .aud{ border:1px solid var(--line); border-radius:12px; padding:22px; background:#fff; }
+  .aud h3{ color:var(--brand); font-size:17px; margin-bottom:8px; }
+  .aud ul{ margin-left:18px; } .aud li{ font-size:14px; color:var(--muted); margin:4px 0; }
+
+  .demo{ background:linear-gradient(135deg,var(--brand),var(--brand2)); color:#fff; border-radius:14px; padding:30px; text-align:center; }
+  .demo code{ background:rgba(255,255,255,.18); padding:2px 8px; border-radius:5px; }
+  .demo .btn{ margin-top:14px; }
+
+  .ctaband{ background:var(--dark); color:#fff; text-align:center; }
+  .ctaband h2{ color:#fff; } .ctaband .sub{ color:#cfe0f0; }
+
+  footer{ background:#0a1a2b; color:#9fb3c6; font-size:13px; padding:26px 0; }
+  footer .wrap{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; }
+  footer b{ color:#fff; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#">
+      <img class="brandlogo" src="/elektronika-logo.png" alt="Elektronika" onerror="this.style.display='none'">
+      <span class="logo">CWS<small>CAR&nbsp;WASH&nbsp;SYSTEM</small></span>
+    </a>
+    <div class="links">
+      <a href="#why">Why CWS</a>
+      <a href="#how">How it works</a>
+      <a href="#rfid">RFID cards</a>
+      <a href="#forwho">For whom</a>
+      <a href="https://www.elektronika.rs.ba" target="_blank" rel="noopener">More products ↗</a>
+      <span class="lang"><a class="langlink" href="/">BS</a><span class="sep">|</span><b>EN</b></span>
+      <a class="btn btn-cta" href="#contact">Request a quote</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Smart car wash.<br>Remotely managed.</h1>
+    <p class="lead">CWS is the new generation of self-service car-wash management — a complete platform for
+      automation, payment, RFID loyalty and real-time monitoring of every bay, from anywhere.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://cws-test.cws-ng.org" target="_blank">▶ Try the live demo</a>
+      <a class="btn btn-ghost" href="#contact">Request a quote</a>
+    </div>
+    <p class="micro">Reference installation: <b>KÄRCHER, Banja Luka</b> · 15 years of experience · 5-year warranty · CE marked</p>
+  </div>
+</header>
+
+<div class="trust">
+  <div class="wrap">
+    <span>✓ <b>Kärcher</b> reference</span>
+    <span>✓ <b>15 years</b> of production</span>
+    <span>✓ <b>5-year</b> warranty</span>
+    <span>✓ <b>Remote</b> monitoring & OTA</span>
+    <span>✓ <b>Anti-clone</b> security</span>
+    <span>✓ <b>CE</b> marked</span>
+  </div>
+</div>
+
+<!-- WHY -->
+<section id="why">
+  <div class="wrap">
+    <h2>Everything you need — in one system</h2>
+    <p class="sub">From controlling each bay to central monitoring of the whole site and remote servicing.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">🖥️</div><h3>Real-time monitoring</h3><p>Dashboard with the status of every bay: timer, coins inserted, RFID cards, session amount, last activity.</p></div>
+      <div class="card"><div class="ico">💳</div><h3>Secure, flexible payment</h3><p>Coin acceptors (serial/parallel/binary), bill acceptor, plus RFID loyalty cards for regular customers.</p></div>
+      <div class="card"><div class="ico">📡</div><h3>Remote access</h3><p>Monitor and configure the site from a phone, tablet or PC — no app to install, via your own web domain.</p></div>
+      <div class="card"><div class="ico">⬆️</div><h3>OTA firmware update</h3><p>Update controller software remotely without a site visit — fixes and new features arrive over the network.</p></div>
+      <div class="card"><div class="ico">🔒</div><h3>Anti-clone security</h3><p>Cryptographic authentication of every controller prevents system cloning and unauthorized hardware swaps.</p></div>
+      <div class="card"><div class="ico">📊</div><h3>Statistics & charts</h3><p>Revenue by day/week/range, by company and card, wash-program usage — all in a few clicks.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how" class="sec-bg">
+  <div class="wrap">
+    <h2>Installation in minutes</h2>
+    <p class="sub">A bay panel goes live with just <b>3 connectors</b>. The central cabinet ships pre-assembled and tested.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Connect the bay</h3><p>UTP cable (communication + power), touch buttons and the coin acceptor. RFID reader optional.</p></div>
+      <div class="step"><div class="n">2</div><h3>Place the cabinet</h3><p>A ready control cabinet — you only wire pumps, valves and sensors to labelled terminals.</p></div>
+      <div class="step"><div class="n">3</div><h3>Configure remotely</h3><p>All settings via the web interface. We connect remotely to assist with commissioning.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTS -->
+<section>
+  <div class="wrap">
+    <h2>Three pillars of the system</h2>
+    <div class="grid">
+      <div class="card"><div class="ico">🔢</div><h3>Bay panel</h3><p>70 mm RGB LED display (any colour), coin & bill acceptor input, RFID, waterproof touch buttons, ethernet. Up to 7 wash programs, discounts, dual till.</p></div>
+      <div class="card"><div class="ico">⚙️</div><h3>I/O control</h3><p>Up to <b>112 digital outputs 24V/10A</b> plus analog inputs for sensors. Drive actuators directly — relays are history.</p></div>
+      <div class="card"><div class="ico">🗄️</div><h3>Central server</h3><p>Web administration, transaction & card database, MQTT, automatic nightly backup, and three access levels (owner / installer / admin).</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RFID -->
+<section id="rfid" class="sec-bg">
+  <div class="wrap">
+    <h2>RFID loyalty — your way</h2>
+    <p class="sub">Pre-paid or post-paid, at company level and/or per individual card — even combined.</p>
+    <div class="grid">
+      <div class="card"><div class="ico">💼</div><h3>Per company</h3><p>Shared company balance; all cards draw from it while funds last. Ideal for fleets.</p></div>
+      <div class="card"><div class="ico">🪪</div><h3>Per card</h3><p>Each card has its own limit/balance. Combine with the shared company account as needed.</p></div>
+      <div class="card"><div class="ico">🌐</div><h3>Top-up from anywhere</h3><p>Recharge a company or card balance from a phone/PC, from any location with internet.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section id="forwho">
+  <div class="wrap">
+    <h2>Who CWS is for</h2>
+    <div class="audience">
+      <div class="aud"><h3>Car-wash owners</h3><ul>
+        <li>Full control and revenue insight</li>
+        <li>RFID loyalty for regular customers</li>
+        <li>Monitor from a phone, no app</li>
+        <li>Investment protection (anti-clone)</li>
+      </ul></div>
+      <div class="aud"><h3>Installers / integrators</h3><ul>
+        <li>Fast install (3 connectors per bay)</li>
+        <li>Remote diagnostics and OTA updates</li>
+        <li>All settings in YAML — export/import</li>
+        <li>Ready, tested cabinets</li>
+      </ul></div>
+      <div class="aud"><h3>Distributors</h3><ul>
+        <li>High margin + subscription revenue</li>
+        <li>Ready, proven product</li>
+        <li>Full technical & marketing support</li>
+        <li>Differentiation from competitors</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section class="sec-bg">
+  <div class="wrap">
+    <div class="demo">
+      <h2 style="color:#fff">See the system live — right now</h2>
+      <p style="opacity:.95; max-width:640px; margin:10px auto 0">Open the demo server from your phone or computer and explore the dashboard, settings and statistics.</p>
+      <p style="margin-top:14px">Address: <code>cws-test.cws-ng.org</code> &nbsp; User: <code>serviser</code> &nbsp; Password: <code>servis2026</code></p>
+      <a class="btn btn-primary" href="https://cws-test.cws-ng.org" target="_blank">Open demo ▶</a>
+    </div>
+  </div>
+</section>
+
+<!-- FUTURE -->
+<section>
+  <div class="wrap" style="text-align:center; max-width:760px">
+    <h2>Ready for the future</h2>
+    <p class="sub" style="margin-bottom:0">A modular architecture lets you expand to more bays and sites, IoT sensors, consumption metering
+      (electricity, water, chemicals), automatic lighting, even CCTV — all in one system with a single login.
+      Home Assistant platform integration is on the roadmap.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="ctaband">
+  <div class="wrap">
+    <h2>Request a quote or a demo</h2>
+    <a class="btn btn-primary" href="mailto:info@elektronika.rs.ba?subject=CWS%20system%20enquiry">✉ Send enquiry</a>
+    <a class="btn btn-ghost" href="tel:+387(0)51/346-260" style="margin-left:10px">📞 +387 (0)51/346-260</a>
+    <p class="sub" style="margin:18px auto 0; color:#cfe0f0">See the rest of our electronics range at
+      <a href="https://www.elektronika.rs.ba" target="_blank" rel="noopener" style="color:#fff; text-decoration:underline"><b>www.elektronika.rs.ba</b></a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>CWS — Car Wash System</b> · ELEKTRONIKA · K. Petra II br. 71, BANJA LUKA, BiH</div>
+    <div>+387(0)51/346-260 · info@elektronika.rs.ba · www.cws-ng.org · Demo: cws-test.cws-ng.org · <a href="https://www.elektronika.rs.ba" target="_blank" rel="noopener" style="color:#fff"><b>elektronika.rs.ba</b></a></div>
+  </div>
+</footer>
+
+</body>
+</html>
