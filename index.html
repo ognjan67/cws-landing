@@ -44,6 +44,17 @@
   .hero .micro{ margin-top:18px; font-size:13px; opacity:.85; }
   @media(max-width:760px){ .hero h1{ font-size:30px; } .hero p.lead{ font-size:17px; } }
 
+  /* HERO — prošireni opis */
+  .hero-more{ margin-top:36px; padding-top:32px; border-top:1px solid rgba(255,255,255,.22); max-width:760px; }
+  .hero-more .hero-tagline{ font-size:20px; font-weight:700; margin-bottom:10px; }
+  .hero-more p{ font-size:15px; opacity:.94; margin:0 0 14px; }
+  .hero-more h3{ font-size:17px; color:#fff; margin:26px 0 10px; }
+  .hero-more ul, .hero-more ol{ margin:0 0 14px 20px; }
+  .hero-more li{ font-size:14.5px; opacity:.94; margin:6px 0; }
+  .hero-more ol{ margin-top:8px; }
+  .hero-more .hero-more-link{ margin-top:22px; }
+  .hero-more .hero-more-link a{ font-weight:700; text-decoration:underline; }
+
   /* TRUST */
   .trust{ background:#fff; border-bottom:1px solid var(--line); }
   .trust .wrap{ display:flex; flex-wrap:wrap; gap:14px 36px; justify-content:center; padding:18px 22px; }
@@ -116,6 +127,51 @@
       <a class="btn btn-ghost" href="#kontakt">Zatraži ponudu</a>
     </div>
     <p class="micro">Referentna instalacija: <b>KÄRCHER, Banja Luka</b> · 15 godina iskustva · garancija 5 godina</p>
+
+    <div class="hero-more">
+      <p class="hero-tagline">Najsavremeniji sistem za samouslužne perionice u Evropi</p>
+      <p>Kompletna profesionalna platforma za automatizaciju, nadzor i daljinsko upravljanje samouslužnim autopraonicama.</p>
+      <p><b>Možda i najvažnija odlika ovog sistema je mogućnost integracije u Home Assistant</b>, koji je trenutno najjači sistem za automatizacije, jer to otvara nevjerovatne mogućnosti za daljnji razvoj i unapređenja, bez ovisnosti o bilo kojem proizvođaču! CWS, video nadzor, razni senzori i dojave postaju jedan jedinstven sistem!!!</p>
+      <p>CWS-NG je najnovija generacija industrijske automatike namijenjena modernim samouslužnim autopraonicama. Sistem je razvijan 2 god., završen 2026. god. i trenutno je sasvim sigurno najsavremeniji sistem za autopraonice u Evropi, jer ovakav nivo daljinskog upravljanja, kontrole i nadzora ne nudi niko od najjačih proizvođača u ovoj oblasti.</p>
+
+      <h3>Sistem se sastoji od:</h3>
+      <ul>
+        <li>Linux servera sa web aplikacijom za podešavanje, upravljanje i daljinski nadzor</li>
+        <li>IO Controller ploče, na koju se spaja više IO16 ploča, za pokretanje ventila, pumpi…</li>
+        <li>CarWashPanel ploče za boksove, sa displejima i klasičnim ili kapacitivnim tač tasterima (opciono)</li>
+        <li>Mjenjačnica ili kiosk za naplatu, sa opcijom za elektronski prenos uplate u boks (bez žetona), i naplatu preko kreditne kartice</li>
+      </ul>
+
+      <h3>Linux server</h3>
+      <ul>
+        <li>Daljinski pristup obezbijeđen VPN tunelima na zakupljenom domenu cws-ng.org, tako da se kod korisnika ne mora ništa podešavati na ruteru, nema nikakvog otvaranja portova, a korisnik pristupa preko linka na osnovu imena svoje perionice!</li>
+        <li>Linux serveru samo treba omogućiti spajanje na internet, pri čemu je nebitno kakva je mreža kod korisnika i šta sve ima na njoj.</li>
+        <li>Web aplikacija omogućava podešavanje parametara, testiranje, upravljanje i nadzor, bez instalacije bilo kakve aplikacije ili softvera na telefonu/tabletu/računaru</li>
+        <li>Upotreba RFID kartica, sa raznim opcijama, podesivim na nivou kupca (prepejd, postpejd, kredit…)</li>
+        <li>Vođenje evidencija o svim transakcijama na karticama (dopune, korištenje, statistike…)</li>
+        <li>Omogućena 3 nivoa pristupa:
+          <ol>
+            <li>za vlasnika (vidi statistike, promet, trenutno stanje itd.)</li>
+            <li>za servisera/instalatera sistema (može vršiti konfigurisanje i podešavanja svih parametara rada, testirati funkcije, vidjeti greške, uključiti/isključiti boksove, itd.)</li>
+            <li>za admina (podešavanje mrežnih parametara, daljinski apdejt firmvera na svim pločama boksova i IO kontroleru, promjena funkcije pojedinih ploča, praćenje mqtt saobraćaja na mreži, itd.)</li>
+          </ol>
+          Logovanje i pregled grešaka u sistemu, do tog nivoa da se prijavljuje neispravan segment na RGB LED displeju (zna se koji boks, koji displej, koji segment i koja boja je neispravna 🙂). Displeji su sada RGB tipa, pa se boja podešava po želji kupca.
+        </li>
+        <li>Postoji i pokrenut fleet server, koji automatski prati dostupnost i stanje svih servera na perionicama, zauzetost procesora, RAM-a, radi automatski bekap baza u noćnim satima…</li>
+      </ul>
+
+      <h3>CarWashPanel ploča sa displejima u boji koju podešavate po želji kupca</h3>
+      <p>Jedna ploča koja može da vrši 4 funkcije!</p>
+      <ul>
+        <li>Klasičan panel, ploča za boks perionice</li>
+        <li>Ploča za usisavač (rele 16A za motor)</li>
+        <li>Ploča za mjenjačnicu – može se spajati akceptor, žetonjera i hopper, za isplatu žetona</li>
+        <li>Kiosk za naplatu – vrši naplatu, kao i mjenjačnica, ali ne izbacuje žetone nego omogućava da se tasterom izvrši transfer uplate direktno u boks, u koji ste već parkirali vozilo. Signalizira na tasterima zauzete, slobodne i neaktivne/isključene boksove (ako ih ima).</li>
+      </ul>
+      <p>Izbor između ove 4 funkcije vrši se na serveru jednim klikom i selekcijom željene funkcije! Ploča se resetuje i podigne u novoj ulozi. Vrlo korisno, npr. ako se desi negdje da stane mjenjačnica ili kiosk, praonica ne može da radi, dovoljno je prebaciti ploču sa nekog usisavača na mjenjačnicu, daljinski se setuje druga funkcija i sve dalje radi normalno!!! Ili isto tako za boks, koji donosi više od usisavača.</p>
+
+      <p class="hero-more-link"><a href="https://www.elektronika.rs.ba/car-wash-system-new-generation/" target="_blank" rel="noopener">Više detalja na elektronika.rs.ba →</a></p>
+    </div>
   </div>
 </header>
 
