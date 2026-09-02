@@ -42,6 +42,17 @@
   .hero .micro{ margin-top:18px; font-size:13px; opacity:.85; }
   @media(max-width:760px){ .hero h1{ font-size:30px; } .hero p.lead{ font-size:17px; } }
 
+  /* HERO — extended overview */
+  .hero-more{ margin-top:36px; padding-top:32px; border-top:1px solid rgba(255,255,255,.22); max-width:760px; }
+  .hero-more .hero-tagline{ font-size:20px; font-weight:700; margin-bottom:10px; }
+  .hero-more p{ font-size:15px; opacity:.94; margin:0 0 14px; }
+  .hero-more h3{ font-size:17px; color:#fff; margin:26px 0 10px; }
+  .hero-more ul, .hero-more ol{ margin:0 0 14px 20px; }
+  .hero-more li{ font-size:14.5px; opacity:.94; margin:6px 0; }
+  .hero-more ol{ margin-top:8px; }
+  .hero-more .hero-more-link{ margin-top:22px; }
+  .hero-more .hero-more-link a{ font-weight:700; text-decoration:underline; }
+
   .trust{ background:#fff; border-bottom:1px solid var(--line); }
   .trust .wrap{ display:flex; flex-wrap:wrap; gap:14px 36px; justify-content:center; padding:18px 22px; }
   .trust b{ color:var(--brand); }
@@ -113,6 +124,51 @@
       <a class="btn btn-ghost" href="#contact">Request a quote</a>
     </div>
     <p class="micro">Reference installation: <b>KÄRCHER, Banja Luka</b> · 15 years of experience · 5-year warranty · CE marked</p>
+
+    <div class="hero-more">
+      <p class="hero-tagline">The most advanced self-service car-wash system in Europe</p>
+      <p>A complete professional platform for automation, monitoring and remote management of self-service car washes.</p>
+      <p><b>Perhaps the most important feature of this system is its integration with Home Assistant</b> — currently the most powerful automation platform available — opening up incredible possibilities for further development and expansion, with no dependency on any single manufacturer! CWS, video surveillance, various sensors and alerts become one unified system!!!</p>
+      <p>CWS-NG is the newest generation of industrial automation built for modern self-service car washes. The system took 2 years to develop, was completed in 2026, and is currently, without question, the most advanced car-wash system in Europe — no other major manufacturer in this field offers this level of remote management, control and monitoring.</p>
+
+      <h3>The system consists of:</h3>
+      <ul>
+        <li>A Linux server with a web application for configuration, management and remote monitoring</li>
+        <li>An IO Controller board, to which multiple IO16 expansion boards connect, driving valves, pumps…</li>
+        <li>CarWashPanel boards for each wash bay, with displays and classic or capacitive touch buttons (optional)</li>
+        <li>A change/token machine or payment kiosk, with the option to transfer payment electronically straight to a bay (no tokens needed), plus credit-card payment</li>
+      </ul>
+
+      <h3>Linux server</h3>
+      <ul>
+        <li>Remote access secured over VPN tunnels on the leased domain cws-ng.org, so nothing needs to be configured on the customer's router — no port forwarding at all — and the customer connects via a link based on their car wash's own name!</li>
+        <li>The Linux server only needs an internet connection — the local network setup on the customer's side doesn't matter at all.</li>
+        <li>The web application handles configuration, testing, management and monitoring, with no app or software to install on any phone/tablet/computer</li>
+        <li>RFID card support, with multiple options configurable per customer (prepaid, postpaid, credit…)</li>
+        <li>Full transaction history for every card (top-ups, usage, statistics…)</li>
+        <li>Three access levels:
+          <ol>
+            <li>Owner (sees statistics, revenue, current status, etc.)</li>
+            <li>Service technician/installer (can configure and adjust all operating parameters, test functions, view errors, enable/disable bays, etc.)</li>
+            <li>Administrator (network parameter configuration, remote firmware updates for every bay board and the IO controller, changing the role of individual boards, monitoring MQTT traffic on the network, etc.)</li>
+          </ol>
+          Logging and error tracking go down to the level of a faulty segment on the RGB LED display (it knows exactly which bay, which display, which segment, and which colour is faulty 🙂). The displays are now full RGB, so colours can be set to the customer's preference.
+        </li>
+        <li>A fleet server is already running, automatically tracking the availability and status of every car wash's server — CPU load, RAM usage — and performs automatic nightly database backups…</li>
+      </ul>
+
+      <h3>CarWashPanel — the board with a colour display you configure to the customer's taste</h3>
+      <p>One board that can perform 4 different roles!</p>
+      <ul>
+        <li>Standard panel — the board for a wash bay</li>
+        <li>Vacuum board (16A relay for the motor)</li>
+        <li>Change-machine board — can connect a bill/coin acceptor, token hopper and payout hopper, for dispensing tokens</li>
+        <li>Payment kiosk — takes payment just like the change machine, but instead of dispensing tokens it lets the customer transfer the payment directly to the bay they've already parked in, at the press of a button. Indicates occupied, free and inactive/disabled bays on its buttons (if any).</li>
+      </ul>
+      <p>Choosing between these 4 roles is done on the server with a single click — the board resets and comes back up in its new role. Extremely useful: for example, if a change machine or kiosk ever goes down, the car wash doesn't have to stop — just switch a vacuum board over to the change-machine role, set the new role remotely, and everything keeps working normally!!! The same applies the other way around, for a bay board that's busier than a vacuum.</p>
+
+      <p class="hero-more-link"><a href="https://www.elektronika.rs.ba/car-wash-system-new-generation/" target="_blank" rel="noopener">More details at elektronika.rs.ba →</a></p>
+    </div>
   </div>
 </header>
 
